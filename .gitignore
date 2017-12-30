@@ -1,0 +1,10 @@
+/PriorityQueue/bin
+/PriorityQueue/obj
+/PriorityQueue/Properties
+*.dll
+*.lib
+*.config
+*.sln
+*.csproj
+/.vs
+*VC.db
