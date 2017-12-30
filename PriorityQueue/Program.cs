@@ -8,31 +8,6 @@ namespace PriorityQueue
 {
     class Program
     {
-        class Node : IComparable<Node>
-        {
-            int cost;
-
-            public Node(int cost)
-            {
-                this.cost = cost;
-            }
-            public int CompareTo(Node other)
-            {
-                return Cost > other.Cost ? 1 : 0;
-            }
-
-            public int Cost
-            {
-                get { return this.cost; }
-            }
-
-            public override string ToString()
-            {
-                return this.cost.ToString();
-
-            }
-        }
-
         /// <summary>
         /// Meghatározza egy adott számból (indexből), hogy hányadik szinten van
         /// </summary>
