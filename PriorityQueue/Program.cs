@@ -31,7 +31,7 @@ namespace PriorityQueue
                 Console.Write(t[i] + " ");
             }
         }
-        static void printArrayAsBinaryTree<T>(T[] t, int count, int start_y = 0)
+        static void printArrayAsBinaryTree(IShowAble[] t, int count, int start_y = 0)
         {
             int len = count;
             int totalLevels = ComputeLevel(len);
@@ -50,10 +50,12 @@ namespace PriorityQueue
                 {
                     //ha új szint, akkor sortörés
                     Console.WriteLine();
+                    Console.WriteLine();
                     Hline(Space_Left - 1);
                 }
 
-                Console.Write(t[i].ToString());
+                // Console.Write(t[i].ToString());
+                Console.Write(t[i].oneC());
                 Hline(Space_BTWSiblings - 1);
             }
         }
@@ -61,25 +63,22 @@ namespace PriorityQueue
         static void Main(string[] args)
         {
 
-            PriorityQueueMin<Node> PQmin = new PriorityQueueMin<Node>();
-            PriorityQueueMax<Node> PQmax = new PriorityQueueMax<Node>();
+            PriorityQueueMin<Node<char>> PQmin = new PriorityQueueMin<Node<char>>(20);
+            PriorityQueueMax<Node<char>> PQmax = new PriorityQueueMax<Node<char>>(20);
 
 
-            PQmax.addArray(new Tuple<Node, double>[5]
-                 /*{
-                     new Tuple<Node, double>(new Node(2), 2),
-                     new Tuple<Node, double>(new Node(1), 1),
-                     new Tuple<Node, double>(new Node(5), 5),
-                     new Tuple<Node, double>(new Node(3), 3),
-                     new Tuple<Node, double>(new Node(4), 4)
-                 }*/
-
+            PQmax.addArray(new Tuple<Node<char>, double>[10]
                  {
-                        new Tuple<Node, double>(new Node(2), 2),
-                        new Tuple<Node, double>(new Node(1), 1),
-                        new Tuple<Node, double>(new Node(5), 5),
-                        new Tuple<Node, double>(new Node(3), 3),
-                        new Tuple<Node, double>(new Node(4), 4)
+                        new Tuple<Node<char>, double>(new Node<char>('a'), 2),
+                        new Tuple<Node<char>, double>(new Node<char>('b'), 1),
+                        new Tuple<Node<char>, double>(new Node<char>('c'), 5),
+                        new Tuple<Node<char>, double>(new Node<char>('d'), 3),
+                        new Tuple<Node<char>, double>(new Node<char>('e'), 4),
+                        new Tuple<Node<char>, double>(new Node<char>('f'), 9),
+                        new Tuple<Node<char>, double>(new Node<char>('g'), 6),
+                        new Tuple<Node<char>, double>(new Node<char>('h'), 10),
+                        new Tuple<Node<char>, double>(new Node<char>('i'), 7),
+                        new Tuple<Node<char>, double>(new Node<char>('j'), 8)
                 }
             );
 
@@ -92,7 +91,7 @@ namespace PriorityQueue
                 Console.WriteLine("count: " + PQmax.Count);
                 printArray<double>(PQmax.Priorities, PQmax.Count);
                 Console.WriteLine();
-                printArrayAsBinaryTree<Node>(PQmax.Heap, PQmax.Count);
+                printArrayAsBinaryTree(PQmax.Heap, PQmax.Count);
                 Console.WriteLine("\n\npop item: {0}\n", PQmax.pop());
             }
             while (PQmax.Count > 0);
@@ -106,7 +105,7 @@ namespace PriorityQueue
             Console.WriteLine("\n\nAfter HeapSort: ");
             PQ.heapSort();
 
-            PrintArrayAsBinaryTree<Node>(PQ.Heap, PQ.Count);
+            PrintArrayAsBinaryTree<Node<char>>(PQ.Heap, PQ.Count);
             */
 
             Console.ReadLine();
